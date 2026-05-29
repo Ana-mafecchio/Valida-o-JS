@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação com JavaScript</title>
+</head>
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    div.box{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 400px;
+        align-items: start;
+    }
+    button {
+        max-width: 100px;
+        margin: 0 auto;
+    }
+    input {
+        width: 200px;
+
+    }
+</style>
+<body>
+    <h1>Validação com JavaScript</h1>
+
+    <div class="box">
+        <label id="resultado"></label>
+        <div>
+            <label for="">Digite seu nome: </label>
+            <input type="text" id="txtNome" onclick="fnReset()">
+        </div>
+        <button onclick="fnValidarCampo()">Validar!</button>
+    </div>
+</body>
+<script>    
+
+function fnValidarCampo(){
+
+function fnReset() {
+    document.getElementById('txtNome').style.borderColor = 'black'
+}   
+
+    const campoResultado = document.getElementById('resultado')
+    const campoNome = document.getElementById('txtNome')
+    const nomeCompleto = document.getElementById('txtNome').value.trim()
+    //.trim remove os espaços do começo e do final do texto
+
+    //.length conta quantos caracter tem o texto
+    if(nomeCompleto.length <= 4){
+        // return nesse contexto é o responsavel por 'travar'
+        // o sistema e obrigar o usuario a digitar corretamente
+        return("digite um texto maior que 4 letras")
+    }
+    if (nomeCompleto.length >= 150){
+        return alert("Maximo de 150 letras!")
+    }
+
+    const nomeSplit = nomeCompleto.split(" ")
+    
+    if (nomeSplit.length <= 1){
+        campoNome.style.borderColor = "red"
+        campoResultado.innerText = "Digite seu nome completo"
+        campoResultado.style.color = "red"
+        return
+    }
+
+    nomeCompleto.split('').map((letra) =>{
+        letra == '@' ? console.log(true) : ''
+    })
+
+    
+
+    if (nomeCompleto.include('E', 'S')){
+        console.log('to agui')
+    }
+
+    alert("Você digitou seu nome correto: " + nomeCompleto)
+    campoResultado.innerText = ""
+    campoResultado.style.color = "Black"
+}
+
+
+
+
+</script>
+</html>
